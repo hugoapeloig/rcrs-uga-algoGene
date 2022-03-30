@@ -59,6 +59,12 @@ public class Individual {
 		genes.add(i, secondMutationPlace);
 	}
 	
+	public String toString(){
+		String s = "Le parcours : ";
+		for(int i : genes) s+=i;
+		return s;
+	}
+	
 	private void calcScore() {
 		String[] namesOrder = new String[genes.size()];
 		for(int i=0; i<genes.size(); i++) {

@@ -6,7 +6,8 @@ public class Main {
 		// TODO Auto-generated method stub
 		Population p = new Population();
 		p.start(Constants.NUMBEROFGENERATIONS);
-
+		Individual i = p.getTheBest();
+		System.out.println(i);
 	}
 
 }
