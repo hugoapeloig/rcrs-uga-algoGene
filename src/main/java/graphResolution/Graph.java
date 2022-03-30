@@ -1,0 +1,72 @@
+package graphResolution;
+
+import java.util.ArrayList;
+
+import javax.management.RuntimeErrorException;
+
+public class Graph {
+	
+	private ArrayList<Node> nodes;
+	private ArrayList<Edge> edges;
+	
+	public Graph() {
+		nodes = new ArrayList<Node>();
+		edges = new ArrayList<Edge>();
+	}
+	
+	public Graph(int numberOfNode) {
+		this();
+		for(int i=0; i<numberOfNode; i++) nodes.add(new Node());
+		edgesWithRandomValueCreator();
+	}
+	
+	public Graph(ArrayList<Node> nodes, ArrayList<Edge> edges) {
+		this.nodes=nodes;
+		this.edges=edges;
+	}
+	
+	public ArrayList<Node> getNodes() {
+		return nodes;
+	}
+	
+	public ArrayList<Edge> getEdges() {
+		return edges;
+	}
+	
+	private void edgesWithRandomValueCreator() {
+		for(int i=0; i<nodes.size(); i++) {
+			for(int j=0; j<nodes.size(); j++) {
+				if(i==nodes.size()-1 && i==j) break;
+				if(i==j) j++;
+				int value = (int) ((Math.random()*10)+1);
+				edges.add(new Edge(nodes.get(i), nodes.get(j), value));
+//				System.out.println("start : "+i+" end : "+j+" value : "+value);
+			}
+		}
+	}
+	
+	public int calcTotalValue(String[] namesOrder) {
+		int totalValue=0;
+		for(int i=0; i<namesOrder.length-1; i++) {
+			//For each edge unless the last and the first nodes
+			String start=namesOrder[i];
+			String end=namesOrder[i+1];
+			Edge e = getEdgeNamed(start, end);
+			totalValue+=e.getValue();
+		}
+		//We take care of the last edge
+		String start=namesOrder[namesOrder.length-1];
+		String end=namesOrder[0];
+		Edge e = getEdgeNamed(start, end);
+		totalValue+=e.getValue();
+		return totalValue;
+	}
+	
+	private Edge getEdgeNamed(String start, String end) {
+		for(Edge e : edges) {
+			if(e.getStart().getName().equals(start) && e.getEnd().getName().equals(end)) return e;
+			if(e.getStart().getName().equals(end) && e.getEnd().getName().equals(start)) return e;
+		}
+		throw new RuntimeErrorException(null);
+	}
+}
