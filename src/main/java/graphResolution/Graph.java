@@ -62,11 +62,20 @@ public class Graph {
 		return totalValue;
 	}
 	
+	public double getMeanValue() {
+		double mean = 0;
+		for(Edge e : edges) mean += e.getValue();
+		mean = (double) mean/edges.size();
+		mean = mean*(nodes.size()-1);
+		return mean;
+	}
+	
 	private Edge getEdgeNamed(String start, String end) {
 		for(Edge e : edges) {
 			if(e.getStart().getName().equals(start) && e.getEnd().getName().equals(end)) return e;
 			if(e.getStart().getName().equals(end) && e.getEnd().getName().equals(start)) return e;
 		}
-		throw new RuntimeErrorException(null);
+		throw new RuntimeException("This name do not exist : " + start +" "+ end);
 	}
+	
 }

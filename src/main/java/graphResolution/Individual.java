@@ -14,7 +14,8 @@ public class Individual {
 	private double score;
 	
 	public Individual() {
-		for(int i=0; i<Constants.NUMBEROFBUILDINGS; i++) genes.add(Constants.GETANONALREADYCHOSENNUMBER(genes));
+		genes.add(0); //The start is always 0 
+		for(int i=1; i<Constants.NUMBEROFBUILDINGS; i++) genes.add(Constants.GETANONALREADYCHOSENNUMBER(genes));
 		calcScore();
 	}
 	
@@ -51,12 +52,18 @@ public class Individual {
 	}
 	
 	public void mutate() {
-		int firstMutationPlace = (int) (Math.random()*genes.size());
-		int secondMutationPlace = (int) (Math.random()*genes.size());
+		//The mutation can't appears at the first point because he is the starting point
+		int firstMutationPlace = (int) (Math.random()*(genes.size()-1))+1;
+		int secondMutationPlace = (int) (Math.random()*(genes.size()-1))+1;
 		while(firstMutationPlace == secondMutationPlace) secondMutationPlace = (int) (Math.random()*genes.size());
-		int i = genes.remove(firstMutationPlace);
-		genes.add(genes.remove(secondMutationPlace), firstMutationPlace);
-		genes.add(i, secondMutationPlace);
+		int i = genes.get(firstMutationPlace);
+		int j = genes.get(secondMutationPlace);
+		genes.remove(firstMutationPlace);
+		if(firstMutationPlace==genes.size()) genes.add(j);
+		else genes.add(j, firstMutationPlace);
+		genes.remove(secondMutationPlace);
+		if(secondMutationPlace==genes.size()) genes.add(i);
+		else genes.add(i, secondMutationPlace);
 	}
 	
 	public String toString(){
@@ -70,6 +77,16 @@ public class Individual {
 		for(int i=0; i<genes.size(); i++) {
 			namesOrder[i] = genes.get(i).toString();
 		}
-		score = 1/Constants.THEGRAPHTEST.calcTotalValue(namesOrder); //Higher the value of the way is, the lower his score became
+//		for(int i=0; i<namesOrder.length; i++) System.out.print(namesOrder[i]);
+//		System.out.println();
+		try{
+			int s = Constants.THEGRAPHTEST.calcTotalValue(namesOrder);
+			score = (double) 1/s;//Higher the value of the way is, the lower his score became
+		}catch(RuntimeException r) {
+			score = 0;
+		}
+		boolean inDouble = false;
+		for(int i=0; i<genes.size(); i++) for(int j=0; j<genes.size(); j++) if(i!=j && genes.get(i)==genes.get(j)) inDouble = true;
+		if(inDouble) score=0;
 	}
 }

@@ -110,6 +110,7 @@ public class Population {
 		sonGene.addAll(lastPartGenesMother);
 		daughterGene.addAll(lastPartGenesFather);
 		
+		
 		Individual son = new Individual(sonGene), daughter = new Individual(daughterGene);
 		children[0] = son;
 		children[1] = daughter;
