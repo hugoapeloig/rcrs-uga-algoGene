@@ -15,7 +15,7 @@ public class Individual {
 	
 	public Individual() {
 		genes.add(0); //The start is always 0 
-		for(int i=1; i<Constants.NUMBEROFBUILDINGS; i++) genes.add(Constants.GETANONALREADYCHOSENNUMBER(genes));
+		for(int i=1; i<Constants.NUMBEROFBUILDINGS; i++) genes.add(Constants.GETANONALREADYCHOOSENNUMBER(genes));
 		calcScore();
 	}
 	
@@ -68,7 +68,7 @@ public class Individual {
 	
 	public String toString(){
 		String s = "Le parcours : ";
-		for(int i : genes) s+=i;
+		for(int i : genes) s+=""+i+";";
 		return s;
 	}
 	

@@ -9,22 +9,28 @@ public class Constants {
 	
 	public static final int POPULATIONSIZE = 100;
 	
-	public static final int NUMBEROFBUILDINGS = 10;
+	public static final int NUMBEROFBUILDINGS = 13;
 	public static final int NUMBEROFGENERATIONS = 1000;
 	
 	//FUNCTION
 	
-	public static int GETANONALREADYCHOSENNUMBER(ArrayList<Integer> list) {
+	public static int GETANONALREADYCHOOSENNUMBER(ArrayList<Integer> list) {
 		boolean in = false;
-		int theNumber = (int) (Math.random()*NUMBEROFBUILDINGS);
+		int theNumber = (int) (Math.random()*NUMBEROFBUILDINGS-1)+1;//le zero ne peut être pris !
 		for(Integer i : list) if (theNumber == i) in=true;
 		while(in) {
 			in=false;
-			theNumber = (int) (Math.random()*NUMBEROFBUILDINGS);
+			theNumber = (int) (Math.random()*NUMBEROFBUILDINGS-1)+1;
 			for(Integer i : list) if (theNumber == i) in=true;
 		}
 		return theNumber;
 	}
+	
+	public static int FACTORIAL(int i) {
+		for(int j=i-1; j>0; j--) i = j*i;
+		return i;
+	}
+	
 	
 	//GRAPH CONSTANTS
 	public static final Graph THEGRAPHTEST = GRAPHCREATOR();
@@ -34,7 +40,8 @@ public class Constants {
 		ArrayList<Edge> edges = new ArrayList<Edge>();
 		
 		//we create each nodes of the graph
-		String[] names = {"0","1","2","3","4","5","6","7","8","9"};
+		String[] names = new String[NUMBEROFBUILDINGS];
+		for(int i=0; i<names.length; i++) names[i] = ""+i;
 		for(String name : names) nodes.add(new Node(name));
 		//for each couples of nodes we assign them a edge's value
 		//AB=1;AC=3;AE=2;AD=5;BC=1;BD=2;BE=1;CD=5;CE=3;ED=1;

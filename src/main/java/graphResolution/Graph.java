@@ -75,7 +75,7 @@ public class Graph {
 			if(e.getStart().getName().equals(start) && e.getEnd().getName().equals(end)) return e;
 			if(e.getStart().getName().equals(end) && e.getEnd().getName().equals(start)) return e;
 		}
-		throw new RuntimeException("This name do not exist : " + start +" "+ end);
+		throw new RuntimeException("This name does not exist : " + start +" "+ end);
 	}
 	
 }
