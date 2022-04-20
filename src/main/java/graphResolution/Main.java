@@ -27,16 +27,33 @@ public class Main {
 //////		IndividualWithTwoGenes i3 = new IndividualWithTwoGenes();
 //////		System.out.println(i3);
 //////		System.out.println("Son score : " + i3.getScoreTotal());
-////		
-//		PopulationWithNGenes p3 = new PopulationWithNGenes(4);
+//		
+//		int n = 5;
+//		PopulationWithNGenes p3 = new PopulationWithNGenes(n);
 //		p3.start(Constants.NUMBEROFGENERATIONS);
 //		IndividualWithNGenes i4 = p3.getTheBest();
+//		System.out.println("La moyenne : "+Constants.THEGRAPHTEST.getMeanValue());
+//		System.out.println("La moyenne pour "+n+" groupes : "+Constants.THEGRAPHTEST.getMeanValue()/n);
+//		System.out.println("Population with N genes : ");
 //		System.out.println(i4);
 //		System.out.println("Son score : " + i4.getScoreTotal());
+//		System.out.println();
 		
-//		IndividualWithNGenes i5 = new IndividualWithNGenes(4);
-//		System.out.println(i5);
-//		System.out.println("Son score : " + i5.getScoreTotal());
+		IndividualWithNGenes i5 = new IndividualWithNGenes(4);
+		System.out.println(i5);
+		System.out.println("Son score : " + i5.getScoreTotal());
+		System.out.println(i5.getAllGenes());
+		System.out.println(TemporaryStaticTransformation.a2DTabOfIntToString(TemporaryStaticTransformation.listOfGenesTo2DTabOfInt(i5.getAllGenes())));
+		
+//		IndividualWithGenetInception i = new IndividualWithGenetInception(4);
+//		System.out.println(i);
+//		System.out.println("Son score : "+i.getScoreTotal());
+		
+//		PopulationWithGenetInception p4 = new PopulationWithGenetInception(4);
+//		IndividualWithGenetInception i6 = p4.getBest();
+//		System.out.println("Population with genetique Inception : ");
+//		System.out.println(i6);
+//		System.out.println("Son score total : "+i6.getScoreTotal());
 		
 		
 	}

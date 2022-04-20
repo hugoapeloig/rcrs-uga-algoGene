@@ -19,7 +19,7 @@ public class IndividualWithNGenes {
 		for(ArrayList<Integer> gene : listOfGenes) gene.add(0); //For each of them the start is 0
 		int geneNumber=0;
 		for(int i=0; i<total.size(); i++) {
-			if(i!=0 && n!=1 && i%(n-1)==0 && geneNumber<n-1) geneNumber++; //If the rest is'nt 0 : the last gene will be longer than the others
+			if(i!=0 && n!=1 && i%(Constants.NUMBEROFBUILDINGS/n)==0 && geneNumber<n-1) geneNumber++; //If the rest is'nt 0 : the last gene will be longer than the others
 			listOfGenes.get(geneNumber).add(total.get(i));
 		}
 //		System.out.println("Constructor basic : "+listOfGenes);
@@ -79,7 +79,8 @@ public class IndividualWithNGenes {
 	public void mutate() {
 		//In this case, a mutation is the switching of two nodes between two genes (at the same position)
 		//Not the first place wich is zero for the all of them
-		int mutationPlace = (int) (Math.random()*(listOfGenes.get(0).size()-1))+1; //On the first because he is less long or equals to the last
+		int mutationPlace = (int) (Math.random()*(listOfGenes.get(0).size()-1))+1; //On the first because he is less longer or equals to the last
+		if(mutationPlace==8) mutationPlace--; //It need to be solve an other way
 		int firstGenePlace = (int) (Math.random()*listOfGenes.size());
 		int secondGenePlace = (int) (Math.random()*listOfGenes.size());
 		while(secondGenePlace == firstGenePlace) secondGenePlace = (int) (Math.random()*listOfGenes.size());

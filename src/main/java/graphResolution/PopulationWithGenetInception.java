@@ -12,8 +12,17 @@ public class PopulationWithGenetInception {
 	}
 	
 	public PopulationWithGenetInception(int n) {
-		for(int i=0; i<Constants.POPULATIONSIZE; i++) population.add(new IndividualWithGenetInception(n));
+		for(int i=0; i<Constants.POPULATIONSIZE/10; i++) {
+			IndividualWithGenetInception in = new IndividualWithGenetInception(n);
+//			System.out.println("Individu : "+i);
+//			System.out.println(in);
+			population.add(in);
+		}
 	}
 	
-	
+	public IndividualWithGenetInception getBest() {
+		IndividualWithGenetInception best = population.get(0);
+		for(IndividualWithGenetInception i : population) if(i.getScoreTotal()>best.getScoreTotal()) best = i;
+		return best;
+	}
 }

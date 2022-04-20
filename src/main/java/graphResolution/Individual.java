@@ -11,7 +11,7 @@ public class Individual {
 	//wich will depend of the number of team
 	
 	private ArrayList<Integer> genes = new ArrayList<Integer>();
-	private double score;
+	private double score; 
 	
 	public Individual() {
 		genes.add(0); //The start is always 0 
@@ -38,6 +38,7 @@ public class Individual {
 	}
 	
 	public ArrayList<Integer> getFirstPartgenes(int separator){
+		//Return the first part of the gene, between the index 0 and separator (not taken)
 		if(separator>genes.size()) throw new RuntimeException("The separator calcul is wrong !");
 		ArrayList<Integer> firstPartGenes = new ArrayList<Integer>();
 		for(int i=0; i<separator; i++) firstPartGenes.add(genes.get(i));
@@ -45,6 +46,7 @@ public class Individual {
 	}
 	
 	public ArrayList<Integer> getLastPartgenes(int separator){
+		//Return the second part of the gene, between the index separator (taken) and the end (taken)
 		if(separator>genes.size()) throw new RuntimeException("The separator calcul is wrong !");
 		ArrayList<Integer> lastPartGenes = new ArrayList<Integer>();
 		for(int i=separator; i<genes.size(); i++) lastPartGenes.add(genes.get(i));
@@ -53,6 +55,7 @@ public class Individual {
 	
 	public void mutate() {
 		//The mutation can't appears at the first point because he is the starting point
+		//The mutation is the exchange of two node inside the trail
 		int firstMutationPlace = (int) (Math.random()*(genes.size()-1))+1;
 		int secondMutationPlace = (int) (Math.random()*(genes.size()-1))+1;
 		while(firstMutationPlace == secondMutationPlace) secondMutationPlace = (int) (Math.random()*genes.size());

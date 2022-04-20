@@ -9,14 +9,15 @@ public class Constants {
 	
 	public static final int POPULATIONSIZE = 100;
 	
-	public static final int NUMBEROFBUILDINGS = 13;
+	public static final int NUMBEROFBUILDINGS = 40;
 	public static final int NUMBEROFGENERATIONS = 1000;
 	
 	//FUNCTION
 	
 	public static int GETANONALREADYCHOOSENNUMBER(ArrayList<Integer> list) {
+		//Return a number that isn't in the list given in parameter and wich is between 1 and NUMBEROFBUILDINGS
 		boolean in = false;
-		int theNumber = (int) (Math.random()*NUMBEROFBUILDINGS-1)+1;//le zero ne peut être pris !
+		int theNumber = (int) (Math.random()*NUMBEROFBUILDINGS-1)+1;//0 can't be taken
 		for(Integer i : list) if (theNumber == i) in=true;
 		while(in) {
 			in=false;
@@ -27,6 +28,7 @@ public class Constants {
 	}
 	
 	public static int FACTORIAL(int i) {
+		//Return the factorial of i
 		for(int j=i-1; j>0; j--) i = j*i;
 		return i;
 	}
@@ -36,6 +38,7 @@ public class Constants {
 	public static final Graph THEGRAPHTEST = GRAPHCREATOR();
 	
 	private static Graph GRAPHCREATOR() {
+		//Create a graph with NUMBEROFBUILDINGS nodes and random edges
 		ArrayList<Node> nodes = new ArrayList<Node>();
 		ArrayList<Edge> edges = new ArrayList<Edge>();
 		

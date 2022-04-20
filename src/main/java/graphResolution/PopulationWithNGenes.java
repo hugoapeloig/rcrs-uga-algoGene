@@ -63,8 +63,8 @@ public class PopulationWithNGenes {
 			newGeneration.add(sonAndDaughter[1]);
 		}
 		//We make the reproduction of the first and last one
-		IndividualWithNGenes father = populationWithNGenes.get(populationWithNGenes.size()-1);
-		IndividualWithNGenes mother = populationWithNGenes.get(0);
+		IndividualWithNGenes father = populationWithNGenes.get(0);
+		IndividualWithNGenes mother = populationWithNGenes.get(populationWithNGenes.size()-1);
 		IndividualWithNGenes[] sonAndDaughter = oneCoupleReproduction(father, mother);
 		
 		//A mutation append if we are in the probability space

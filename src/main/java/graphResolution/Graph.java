@@ -15,6 +15,7 @@ public class Graph {
 	}
 	
 	public Graph(int numberOfNode) {
+		//Build a graph with numberOfNode nodes and random value for each edges
 		this();
 		for(int i=0; i<numberOfNode; i++) nodes.add(new Node());
 		edgesWithRandomValueCreator();
@@ -34,6 +35,7 @@ public class Graph {
 	}
 	
 	private void edgesWithRandomValueCreator() {
+		//Build each edges of the graph, given them a random value between 1 and 10
 		for(int i=0; i<nodes.size(); i++) {
 			for(int j=0; j<nodes.size(); j++) {
 				if(i==nodes.size()-1 && i==j) break;
@@ -46,6 +48,7 @@ public class Graph {
 	}
 	
 	public int calcTotalValue(String[] namesOrder) {
+		//Return the value of a given road wich is defined by namesoRDER
 		int totalValue=0;
 		for(int i=0; i<namesOrder.length-1; i++) {
 			//For each edge unless the last and the first nodes
@@ -63,6 +66,8 @@ public class Graph {
 	}
 	
 	public double getMeanValue() {
+		//Return the mean value of the edges multiply by the minimum number of edges needed to solve
+		//the graph, passing by every node at least once
 		double mean = 0;
 		for(Edge e : edges) mean += e.getValue();
 		mean = (double) mean/edges.size();
@@ -71,6 +76,7 @@ public class Graph {
 	}
 	
 	private Edge getEdgeNamed(String start, String end) {
+		//return the edge between start-end or end-start because it is the same one
 		for(Edge e : edges) {
 			if(e.getStart().getName().equals(start) && e.getEnd().getName().equals(end)) return e;
 			if(e.getStart().getName().equals(end) && e.getEnd().getName().equals(start)) return e;
