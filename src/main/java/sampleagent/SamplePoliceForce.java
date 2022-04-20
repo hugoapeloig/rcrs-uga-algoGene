@@ -27,7 +27,8 @@ public class SamplePoliceForce extends AbstractSampleAgent<PoliceForce> {
 
   private static final Logger LOG = Logger.getLogger(SamplePoliceForce.class);
   private static final String DISTANCE_KEY = "clear.repair.distance";
-
+  
+  private ArrayList<Road> roadTarget; //Work in progress, will be define thanks to the genetics algorithm
   private int distance;
 
   @Override

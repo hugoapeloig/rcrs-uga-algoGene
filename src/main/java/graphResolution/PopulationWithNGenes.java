@@ -7,24 +7,30 @@ import java.util.Map.Entry;
 public class PopulationWithNGenes {
 	private ArrayList<IndividualWithNGenes> populationWithNGenes = new ArrayList<IndividualWithNGenes>();
 	private boolean halfSeparation;
+	private Graph g;
 	
 	public PopulationWithNGenes() {
-		this(1);
+		this(1, Constants.THEGRAPHTEST);
 	}
 	
 	public PopulationWithNGenes(int n) {
-		for(int i=0; i<Constants.POPULATIONSIZE; i++) populationWithNGenes.add(new IndividualWithNGenes(n));
+		this(n, Constants.THEGRAPHTEST);
+	}
+	
+	public PopulationWithNGenes(int n, Graph g) {
+		for(int i=0; i<Constants.POPULATIONSIZE; i++) populationWithNGenes.add(new IndividualWithNGenes(n,g));
 		halfSeparation = true;
 	}
 	
-	public PopulationWithNGenes(int n, boolean halfSeparation) {
-		this(n);
+	public PopulationWithNGenes(int n, Graph g, boolean halfSeparation) {
+		this(n,g);
 		this.halfSeparation=halfSeparation;
 	}
 	
 	public PopulationWithNGenes(PopulationWithNGenes previousPopulationWithNGenes) {
 		this.populationWithNGenes = previousPopulationWithNGenes.populationWithNGenes;
 		this.halfSeparation=previousPopulationWithNGenes.halfSeparation;
+		this.g=previousPopulationWithNGenes.g;
 	}
 	
 	public ArrayList<IndividualWithNGenes> getPopulationWithNGenes(){
@@ -124,8 +130,8 @@ public class PopulationWithNGenes {
 			daughtersGenes.add(daughtersGene);
 		}
 //		System.out.println("In reproduction : "+sonsGenes);
-		IndividualWithNGenes son = new IndividualWithNGenes(sonsGenes);
-		IndividualWithNGenes daughter = new IndividualWithNGenes(daughtersGenes);
+		IndividualWithNGenes son = new IndividualWithNGenes(sonsGenes, g);
+		IndividualWithNGenes daughter = new IndividualWithNGenes(daughtersGenes, g);
 		children[0] = son;
 		children[1] = daughter;
 		return children;

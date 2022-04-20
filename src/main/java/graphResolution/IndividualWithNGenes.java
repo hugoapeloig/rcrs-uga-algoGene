@@ -7,19 +7,27 @@ public class IndividualWithNGenes {
 	private ArrayList<ArrayList<Integer>> listOfGenes = new ArrayList<ArrayList<Integer>>();
 	private ArrayList<Integer> scores = new ArrayList<Integer>();
 	private double scoreTotal;
+	private Graph g;
+	private int numberOfBuildings;
 	
 	public IndividualWithNGenes() {
-		this(1); //Without n given, this one is taken as 1
+		this(1,Constants.THEGRAPHTEST); //Without n given, this one is taken as 1
 	}
 	
 	public IndividualWithNGenes(int n) {
+		this(n,Constants.THEGRAPHTEST);
+	}
+	
+	public IndividualWithNGenes(int n, Graph g) {
+		this.g=g;
+		numberOfBuildings=g.getNodes().size();
 		for(int i=0; i<n; i++) listOfGenes.add(new ArrayList<Integer>());
 		ArrayList<Integer> total = new ArrayList<Integer>();
-		for(int i=1; i<Constants.NUMBEROFBUILDINGS; i++) total.add(Constants.GETANONALREADYCHOOSENNUMBER(total));
+		for(int i=1; i<numberOfBuildings; i++) total.add(Constants.GETANONALREADYCHOOSENNUMBER(total));
 		for(ArrayList<Integer> gene : listOfGenes) gene.add(0); //For each of them the start is 0
 		int geneNumber=0;
 		for(int i=0; i<total.size(); i++) {
-			if(i!=0 && n!=1 && i%(Constants.NUMBEROFBUILDINGS/n)==0 && geneNumber<n-1) geneNumber++; //If the rest is'nt 0 : the last gene will be longer than the others
+			if(i!=0 && i%(numberOfBuildings/n)==0 && geneNumber<n-1) geneNumber++; //If the rest is'nt 0 : the last gene will be longer than the others
 			listOfGenes.get(geneNumber).add(total.get(i));
 		}
 //		System.out.println("Constructor basic : "+listOfGenes);
@@ -31,11 +39,15 @@ public class IndividualWithNGenes {
 		this.listOfGenes=clone.listOfGenes;
 		this.scores=clone.scores;
 		this.scoreTotal=clone.scoreTotal;
+		this.g=clone.g;
+		this.numberOfBuildings=clone.numberOfBuildings;
 	}
 	
-	public IndividualWithNGenes(ArrayList<ArrayList<Integer>> listOfGenes) {
+	public IndividualWithNGenes(ArrayList<ArrayList<Integer>> listOfGenes, Graph g) {
 //		System.out.println("Constructor with listOfList : "+listOfGenes);
 		this.listOfGenes=listOfGenes;
+		this.g=g;
+		this.numberOfBuildings=g.getNodes().size();
 		calcScores();
 	}
 	
@@ -115,7 +127,7 @@ public class IndividualWithNGenes {
 		
 		try {
 			for(String[] namesOrder : namesOrders) {
-				int score = Constants.THEGRAPHTEST.calcTotalValue(namesOrder);
+				int score = g.calcTotalValue(namesOrder);
 				scores.add(score);
 			}
 			scoreTotal = -1;
@@ -133,7 +145,7 @@ public class IndividualWithNGenes {
 		
 		//Now we check if every nodes are past 
 		ArrayList<Integer> allNodes = new ArrayList<Integer>();
-		for(int i=0; i<Constants.NUMBEROFBUILDINGS; i++) allNodes.add(i);
+		for(int i=0; i<numberOfBuildings; i++) allNodes.add(i);
 		boolean notAllIn = false;
 		for(int i : allNodes) {
 			boolean in = false;
