@@ -11,11 +11,20 @@ import graphResolution.Edge;
 import graphResolution.Graph;
 import graphResolution.Node;
 
+/**
+ * Convertie une Map sous forme de class GMLMap en un Graph
+ * @author noe gravrand
+ * @param GMLMap 
+ * @return Graph : Graph(ArrayList<Node>, ArrayList<Edge> edges)
+ */
 public class ConvertisseurV4 {
 	
 	
 	/**
-	 * Convertie une Map sous forme de fichier gml en un Graph
+	 * Convertie une Map sous forme de class GMLMap en un Graph
+	 * @author noe gravrand
+	 * @param GMLMap 
+	 * @return Graph : Graph(ArrayList<Node>, ArrayList<Edge> edges)
 	 */
 	@SuppressWarnings("unchecked")
 	public Graph convertie (GMLMap map) {
