@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
+import convertisseur_map_to_graph.maps.gml.GMLEdge;
+import convertisseur_map_to_graph.maps.gml.GMLMap;
+import convertisseur_map_to_graph.maps.gml.GMLNode;
 import graphResolution.Edge;
 import graphResolution.Graph;
 import graphResolution.Node;
-import maps.gml.GMLEdge;
-import maps.gml.GMLMap;
-import maps.gml.GMLNode;
 
 public class ConvertisseurV4 {
 	
