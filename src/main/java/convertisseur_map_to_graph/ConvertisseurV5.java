@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Set;
 
-import convertisseur_map_to_graph.maps.gml.GMLEdge;
+import convertisseur_map_to_graph.maps.gml.GMLBuilding;
 import convertisseur_map_to_graph.maps.gml.GMLMap;
-import convertisseur_map_to_graph.maps.gml.GMLNode;
+import convertisseur_map_to_graph.maps.gml.GMLRoad;
 import graphResolution.Edge;
 import graphResolution.Graph;
 import graphResolution.Node;
@@ -17,7 +17,7 @@ import graphResolution.Node;
  * @param GMLMap 
  * @return Graph : Graph(ArrayList<Node>, ArrayList<Edge> edges)
  */
-public class ConvertisseurV4 {
+public class ConvertisseurV5 {
 	
 	
 	/**
@@ -30,25 +30,27 @@ public class ConvertisseurV4 {
 	public Graph convertie (GMLMap map) {
 		
 		
-		Set<GMLNode> nodesTmpr = map.getNodes();
-		Set<GMLEdge> edgesTmpr = map.getEdges();
+		Set<GMLBuilding> batTmpr = map.getBuildings();
+		Set<GMLRoad> routesTmpr = map.getRoads();
 		
 		
-		 ArrayList<graphResolution.Node> nodesL = new ArrayList<graphResolution.Node>(nodesTmpr.size());
-		 for (int xx=0; xx<nodesTmpr.size(); xx++)
+		
+		
+		 ArrayList<graphResolution.Node> batL = new ArrayList<graphResolution.Node>(batTmpr.size());
+		 for (int xx=0; xx<batTmpr.size(); xx++)
 //			 nodesL.addAll((Collection<? extends Node>) xx);
-			 nodesL.addAll((Collection<? extends Node>) nodesTmpr.iterator().next());
+			 batL.addAll((Collection<? extends Node>) batTmpr.iterator().next());
 		
-		 ArrayList<graphResolution.Edge> edgesL = new ArrayList<graphResolution.Edge>(nodesTmpr.size());
-		 for (int yy=0; yy<edgesTmpr.size();yy++)
+		 ArrayList<graphResolution.Edge> routesL = new ArrayList<graphResolution.Edge>(batTmpr.size());
+		 for (int yy=0; yy<routesTmpr.size();yy++)
 //			 nodesL.addAll((Collection<? extends graphResolution.Edge>) yy);
-			 edgesL.addAll((Collection<? extends Edge>) edgesTmpr.iterator().next());
+			 routesL.addAll((Collection<? extends Edge>) routesTmpr.iterator().next());
 		
 		 
-		nodesTmpr.iterator().next();
+		routesTmpr.iterator().next();
 		
 		
-		Graph rslt = new Graph(nodesL, edgesL);
+		Graph rslt = new Graph(batL, routesL);
 		return rslt;
 	}
 	
