@@ -17,6 +17,9 @@ public class Convertisseur {
 	
 	private Map<Integer, GMLBuilding> buildings;
 	
+	private Set<Integer> listeID;
+	private int[] tabID;
+	
 	private ArrayList<Node> nodes;
 	private ArrayList<Edge> edges;
 	
@@ -33,6 +36,11 @@ public class Convertisseur {
 		
 		//Récupère la liste des batiments
 		buildings = map.getListBuilding(); //getListBuilding ses moi qu'il l'ai rajouté dans GMLMap (a la fin)
+		
+		//Récupère les ids des batiments et les transfere dans un tableau de int
+		
+		listeID=buildings.keySet();
+		tabID = listeID.toArray();
 		
 		//Créer la list de nodes et la listes de edges
 		
@@ -67,7 +75,9 @@ public class Convertisseur {
 		
 		while(i < buildings.size()){
 			
-			bat = new Node(i); //i représente l'id
+			int id = tabID[i];
+			
+			bat = new Node(id); //i représente l'id
 			nodes.add(bat);
 			i++;
 		}
