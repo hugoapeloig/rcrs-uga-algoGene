@@ -22,7 +22,12 @@ public class Convertisseur {
 	private ArrayList<Node> nodes;
 	private ArrayList<Edge> edges;
 	
-	
+	/*
+	 Constructeur
+	 @param Une map en format GML
+	 Permet de créer un graph à l'aide de la liste de batiments et des classes
+	 node et edge;
+	 */
 	public Convertisseur (GMLMap map){
 		
 		this.map = map;
@@ -33,11 +38,18 @@ public class Convertisseur {
 		//Créer la list de nodes et la listes de edges
 		
 		this.createNodes();
-		this.createEdge();
+		this.createEdges();
 		
 		
 		//Créer le graph ici
 		graph = new Graph(nodes,edges);
+		
+	}
+	
+	
+	public Graph getGraph(){
+		
+		return this.graph;
 		
 	}
 	
@@ -57,7 +69,7 @@ public class Convertisseur {
 	}
 	
 	
-	public void createEdge(){
+	public void createEdges(){
 		
 		int i=0;
 		Edge route;
