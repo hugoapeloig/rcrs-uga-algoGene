@@ -20,7 +20,6 @@ public class Convertisseur {
 	private ArrayList<Node> nodes;
 	private ArrayList<Edge> edges;
 	
-	WorldInfo worldInf;
 	
 	/*
 	 Constructeur
@@ -90,7 +89,7 @@ public class Convertisseur {
 			
 			int j = 0;
 			
-			while(j < buildings.size()-1){
+			while(j < buildings.size()){
 				
 				bat1 = buildings.get(i);
 				bat2 = buidlings.get(j)
