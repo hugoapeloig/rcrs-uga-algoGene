@@ -33,7 +33,7 @@ public class Convertisseur {
 		this.map = map;
 		
 		//Récupère la liste des batiments
-		buildings = map.getListBuilding(); //getListBuilding c'est moi qu'il l'ai rajouté dans GMLMap (a la fin)
+		buildings = map.getListBuilding(); //getListBuilding ses moi qu'il l'ai rajouté dans GMLMap (a la fin)
 		
 		//Créer la list de nodes et la listes de edges
 		
@@ -88,7 +88,7 @@ public class Convertisseur {
 		
 		while(i < buildgins.size()){
 			
-			int j = i;
+			int j = 0;
 			
 			while(j < buildings.size()-1){
 				
