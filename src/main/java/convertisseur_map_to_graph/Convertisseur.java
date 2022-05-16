@@ -1,16 +1,14 @@
 package convertisseur_map_to_graph;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Set;
+import java.util.Map;
 
 import convertisseur_map_to_graph.maps.gml.GMLBuilding;
 import convertisseur_map_to_graph.maps.gml.GMLMap;
-import convertisseur_map_to_graph.maps.gml.GMLRoad;
+import convertisseur_map_to_graph.maps.gml.GMLShape;
 import graphResolution.Edge;
 import graphResolution.Graph;
 import graphResolution.Node;
-
 
 public class Convertisseur {
 	
@@ -22,13 +20,15 @@ public class Convertisseur {
 	private ArrayList<Node> nodes;
 	private ArrayList<Edge> edges;
 	
+	WorldInfo worldInf;
+	
 	/*
 	 Constructeur
 	 @param Une map en format GML
 	 Permet de créer un graph à l'aide de la liste de batiments et des classes
 	 node et edge;
 	 */
-	public Convertisseur (GMLMap map){
+	public Convertisseur (GMLMap map, StandardWorldModel world){ //faudrait trouver a quoi correspond world car c'est nécessaire pour avoir la distance
 		
 		this.map = map;
 		
@@ -47,6 +47,9 @@ public class Convertisseur {
 	}
 	
 	
+	/*
+	 retourne le graphique
+	 */
 	public Graph getGraph(){
 		
 		return this.graph;
@@ -54,6 +57,10 @@ public class Convertisseur {
 	}
 	
 	
+	/*
+	 Créer les nodes du graph
+	 En récupérant la liste des batiments on crée N (nombre de batiments) nodes avec l'id de chaque batiments
+	 */
 	public void createNodes(){
 		
 		int i =0;
@@ -69,6 +76,10 @@ public class Convertisseur {
 	}
 	
 	
+	/*
+	 Créer les nodes du graph
+	 En récupérant la liste des batiments on crée une route reliant chaque batiment a un autre avec la distance les separant
+	 */
 	public void createEdges(){
 		
 		int i=0;
@@ -95,9 +106,17 @@ public class Convertisseur {
 	}
 	
 	
-	public int distanceBatiment(GMLbuilding a, GMLbuilding b){
+	public int distanceBatiment(GMLBuilding a, GMLBuilding b){
 		
-		return 0
+		double xa= a.getCentreX();
+		double ya= a.getCentreY();
+		
+		double xb= b.getCentreX();
+		double yb= b.getCentreY();
+		
+		int distance = math.sqrt(math.raw(xb-xa,2)-math.raw(yb-ya,2));
+		
+		return distance;
 	}
 	
 	
