@@ -2,6 +2,7 @@ package convertisseur_map_to_graph;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Set;
 
 import convertisseur_map_to_graph.maps.gml.GMLBuilding;
 import convertisseur_map_to_graph.maps.gml.GMLMap;
