@@ -77,7 +77,7 @@ public class Convertisseur {
 			
 			int id = tabID[i];
 			
-			bat = new Node(id); //i représente l'id
+			bat = new Node(id);
 			nodes.add(bat);
 			i++;
 		}
