@@ -1004,4 +1004,15 @@ public class GMLMap implements maps.Map {
         }
         boundsKnown = true;
     }
+    
+    
+    //========================================================================================
+    
+    public Map<Integer, GMLBuilding> getListBuilding(){
+    	
+    	return this.buildings;
+    	
+    }
+    
+  //========================================================================================
 }
