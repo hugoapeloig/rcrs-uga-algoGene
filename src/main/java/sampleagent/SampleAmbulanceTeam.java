@@ -26,6 +26,7 @@ public class SampleAmbulanceTeam extends AbstractSampleAgent<AmbulanceTeam> {
 
   private static final Logger LOG = Logger.getLogger(SampleAmbulanceTeam.class);
   private Collection<EntityID> unexploredBuildings;
+  ArrayList<>
 
   @Override
   public String toString() {

@@ -1,4 +1,4 @@
-package maps;
+package convertisseur_map_to_graph.maps;
 
 /**
    A no-op coordinate conversion.

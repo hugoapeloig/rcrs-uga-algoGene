@@ -4,6 +4,14 @@ import java.util.ArrayList;
 import graphResolution.*;
 
 public class CentrePreDisaster {
+	public class Agent{
+		//Will be replace by the super type of the differents agent's types	
+		private ArrayList<Integer> path;
+		
+		public Agent(ArrayList<Integer> path) {
+			this.path=path;
+		}
+	}
 	//It's the central object which calculate the bests roads and, then the scenario is launched, will allocate
 	//each agent his path
 	private Map m;
@@ -11,6 +19,7 @@ public class CentrePreDisaster {
 	private int nbPoliceForceAvailable, nbAmbulanceTeamAvailable, nbFireBrigadeAvailable;
 	private boolean sameNumberOfAgents; //For each category, true if there is the same number available
 	private ArrayList<ArrayList<ArrayList<Integer>>> bestPaths; //If sameNum[...] is true, there is only one list inside 
+	private ArrayList<ArrayList<Agent>> agents; //Agent will be change : in order : ambu, fire, poli
 	//The bestPaths are : {AmbulancePaths, FirePaths, PolicePaths}
 	
 	public CentrePreDisaster(Map m) {
@@ -61,6 +70,21 @@ public class CentrePreDisaster {
 			bestPaths.add(iFire.getAllGenes());
 			bestPaths.add(iPolice.getAllGenes());
 		}
+		
+	}
+	
+	private void createAgentsList(){
+		if(sameNumberOfAgents) {
+			for(int a=0; a<3; a++) {
+				ArrayList<Agent> agents = new ArrayList<Agent>();
+				//WORK IN PROGRESS 
+			}
+		}
+		else {
+			//WORK IN PROGRESS 
+
+		}
+		
 	}
 	
 

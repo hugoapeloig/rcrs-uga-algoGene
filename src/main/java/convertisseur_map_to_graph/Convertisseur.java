@@ -96,7 +96,7 @@ public class Convertisseur {
 		Edge route;
 		int distance;
 		
-		while(i < buildgins.size()){
+		while(i < buildings.size()){
 			
 			int j = 0;
 			

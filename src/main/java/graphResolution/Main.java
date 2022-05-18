@@ -1,5 +1,5 @@
 package graphResolution;
-
+import convertisseur_map_to_graph.*;
 
 public class Main {
 
@@ -39,11 +39,11 @@ public class Main {
 //		System.out.println("Son score : " + i4.getScoreTotal());
 //		System.out.println();
 		
-		IndividualWithNGenes i5 = new IndividualWithNGenes(4);
-		System.out.println(i5);
-		System.out.println("Son score : " + i5.getScoreTotal());
-		System.out.println(i5.getAllGenes());
-		System.out.println(TemporaryStaticTransformation.a2DTabOfIntToString(TemporaryStaticTransformation.listOfGenesTo2DTabOfInt(i5.getAllGenes())));
+//		IndividualWithNGenes i5 = new IndividualWithNGenes(4);
+//		System.out.println(i5);
+//		System.out.println("Son score : " + i5.getScoreTotal());
+//		System.out.println(i5.getAllGenes());
+//		System.out.println(TemporaryStaticTransformation.a2DTabOfIntToString(TemporaryStaticTransformation.listOfGenesTo2DTabOfInt(i5.getAllGenes())));
 		
 //		IndividualWithGenetInception i = new IndividualWithGenetInception(4);
 //		System.out.println(i);
