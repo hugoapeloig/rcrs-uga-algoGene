@@ -25,6 +25,11 @@ public class SampleFireBrigade extends AbstractSampleAgent<FireBrigade> {
   private static final Logger LOG = Logger.getLogger(SampleFireBrigade.class);
   private Collection<EntityID> unexploredBuildings;
 
+  public SampleFireBrigade(ArrayList<Integer> path) {
+	super();
+	unexploredBuildings = new HashSet<EntityID>();
+	for(Integer id : path) unexploredBuildings.add(new EntityID(id));
+  }
   @Override
   public String toString() {
     return "Sample fire brigade";
@@ -37,7 +42,7 @@ public class SampleFireBrigade extends AbstractSampleAgent<FireBrigade> {
     model.indexClass(StandardEntityURN.BUILDING, StandardEntityURN.REFUGE,
         StandardEntityURN.HYDRANT, StandardEntityURN.GAS_STATION);
     LOG.info("Sample fire brigade connected");
-    unexploredBuildings = new HashSet<EntityID>(buildingIDs);
+    //unexploredBuildings = new HashSet<EntityID>(buildingIDs); 
   }
 
 
@@ -111,7 +116,6 @@ public class SampleFireBrigade extends AbstractSampleAgent<FireBrigade> {
     Collections.sort(targets, new DistanceSorter(location(), model));
     return targets;
   }
-
 
   private void updateUnexploredBuildings(ChangeSet changed) {
     for (EntityID next : changed.getChangedEntities()) {

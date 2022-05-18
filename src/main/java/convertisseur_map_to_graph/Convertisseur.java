@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.Set;
 
+import rescuecore2.standard.entities.StandardWorldModel;
+
 import convertisseur_map_to_graph.maps.gml.GMLBuilding;
 import convertisseur_map_to_graph.maps.gml.GMLMap;
 import convertisseur_map_to_graph.maps.gml.GMLShape;
@@ -102,12 +104,17 @@ public class Convertisseur {
 			
 			while(j < buildings.size()){
 				
-				bat1 = buildings.get(i);
-				bat2 = buidlings.get(j)
+				GMLBuilding bat1 = buildings.get(i);
+				GMLBuilding bat2 = buildings.get(j);
 				
 				distance = distanceBatiment(bat1,bat2);
-						
-				route = new Edge(bat1,bat2,distance);
+				
+				Node start = new Node(); Node end = new Node();
+				for(Node n : nodes) {
+					if(bat1.getID() == n.getID()) start = n;
+					if(bat2.getID() == n.getID()) end = n;
+				}
+				route = new Edge(start,end,distance);
 				edges.add(route);
 				j++;
 			}	
@@ -124,7 +131,7 @@ public class Convertisseur {
 		double xb= b.getCentreX();
 		double yb= b.getCentreY();
 		
-		int distance = math.sqrt(math.raw(xb-xa,2)-math.raw(yb-ya,2));
+		int distance = (int)Math.sqrt(Math.pow(xb-xa,2)-Math.pow(yb-ya,2));
 		
 		return distance;
 	}

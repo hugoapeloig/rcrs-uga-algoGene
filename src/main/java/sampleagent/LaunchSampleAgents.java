@@ -1,6 +1,8 @@
 package sampleagent;
 
 import java.io.IOException;
+import java.util.ArrayList;
+
 import org.apache.log4j.Logger;
 import rescuecore2.Constants;
 import rescuecore2.components.ComponentConnectionException;
@@ -27,7 +29,7 @@ public final class LaunchSampleAgents {
   private static final String AMBULANCE_TEAM_FLAG = "-at";
 
   private static final Logger LOG = Logger.getLogger(LaunchSampleAgents.class);
-
+  private static CentrePreDisaster central;
   /**
    * Launch 'em!
    *
@@ -64,6 +66,7 @@ public final class LaunchSampleAgents {
           LOG.warn("Unrecognised option: " + args[i]);
         }
       }
+      central = new CentrePreDisaster(); //On créé le centrePreDisaster //Regarder comment récuperer map et worldModel
       ComponentLauncher launcher = new TCPComponentLauncher(host, port, config);
       connect(launcher, fb, pf, at, config);
     } catch (IOException e) {
@@ -85,9 +88,12 @@ public final class LaunchSampleAgents {
       ComponentConnectionException, ConnectionException {
     int i = 0;
     try {
+    	int pathNumber=0;
+    	ArrayList<ArrayList<Integer>> paths = central.getPathsForFireFighter();
       while (fb-- != 0) {
         LOG.info("Connecting fire brigade " + (i++) + "...");
-        launcher.connect(new SampleFireBrigade());
+        launcher.connect(new SampleFireBrigade(paths.get(pathNumber)));
+        pathNumber ++;
         LOG.info("success");
       }
     } catch (ComponentConnectionException e) {
@@ -103,9 +109,12 @@ public final class LaunchSampleAgents {
       LOG.info("failed: " + e.getMessage());
     }
     try {
+    	int pathNumber=0;
+    	ArrayList<ArrayList<Integer>> paths = central.getPathsForAmbulance();
       while (at-- != 0) {
         LOG.info("Connecting ambulance team " + (i++) + "...");
-        launcher.connect(new SampleAmbulanceTeam());
+        launcher.connect(new SampleAmbulanceTeam(paths.get(pathNumber)));
+        pathNumber ++;
         LOG.info("success");
       }
     } catch (ComponentConnectionException e) {
