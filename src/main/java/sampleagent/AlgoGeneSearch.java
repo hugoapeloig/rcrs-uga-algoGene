@@ -17,5 +17,5 @@ import java.util.Set;
 //import rescuecore2.worldmodel.EntityID;
 
 public class AlgoGeneSearch {
-
+	//USELESS
 }
