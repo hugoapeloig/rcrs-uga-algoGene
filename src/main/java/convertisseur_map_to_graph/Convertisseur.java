@@ -30,28 +30,28 @@ public class Convertisseur {
 	/*
 	 Constructeur
 	 @param Une map en format GML
-	 Permet de créer un graph à l'aide de la liste de batiments et des classes
+	 Permet de creer un graph a l aide de la liste de batiments et des classes
 	 node et edge;
 	 */
-	public Convertisseur (GMLMap map, StandardWorldModel world){ //faudrait trouver a quoi correspond world car c'est nécessaire pour avoir la distance
+	public Convertisseur (GMLMap map){ 
 		
 		this.map = map;
 		
-		//Récupère la liste des batiments
-		buildings = map.getListBuilding(); //getListBuilding ses moi qu'il l'ai rajouté dans GMLMap (a la fin)
+		//Recupere la liste des batiments
+		buildings = map.getListBuilding(); //getListBuilding ses moi qu il l ai rajoute dans GMLMap (a la fin)
 		
-		//Récupère les ids des batiments et les transfere dans un tableau de int
+		//Recupere les ids des batiments et les transfere dans un tableau de int
 		
 		listeID=buildings.keySet();
 		tabID = listeID.toArray();
 		
-		//Créer la list de nodes et la listes de edges
+		//Creer la list de nodes et la listes de edges
 		
 		this.createNodes();
 		this.createEdges();
 		
 		
-		//Créer le graph ici
+		//Creer le graph ici
 		graph = new Graph(nodes,edges);
 		
 	}
@@ -68,8 +68,8 @@ public class Convertisseur {
 	
 	
 	/*
-	 Créer les nodes du graph
-	 En récupérant la liste des batiments on crée N (nombre de batiments) nodes avec l'id de chaque batiments
+	 Creer les nodes du graph
+	 En recuperant la liste des batiments on cree N (nombre de batiments) nodes avec l id de chaque batiments
 	 */
 	public void createNodes(){
 		
@@ -89,8 +89,8 @@ public class Convertisseur {
 	
 	
 	/*
-	 Créer les nodes du graph
-	 En récupérant la liste des batiments on crée une route reliant chaque batiment a un autre avec la distance les separant
+	 Creer les nodes du graph
+	 En recuperant la liste des batiments on cree une route reliant chaque batiment a un autre avec la distance les separant
 	 */
 	public void createEdges(){
 		

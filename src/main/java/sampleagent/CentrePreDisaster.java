@@ -15,25 +15,23 @@ public class CentrePreDisaster {
 	//It's the central object which calculate the bests roads and, then the scenario is launched, will allocate
 	//each agent his path
 	private Map m;
-	private StandardWorldModel w;
 	private Graph g;
 	private int nbPoliceForceAvailable, nbAmbulanceTeamAvailable, nbFireBrigadeAvailable;
 	private boolean sameNumberOfAgents; //For each category, true if there is the same number available
 	private ArrayList<ArrayList<ArrayList<Integer>>> bestPaths; //If sameNum[...] is true, there is only
 	//The bestPaths are : {AmbulancePaths, FirePaths, PolicePaths}
 	
-	public CentrePreDisaster(Map m, StandardWorldModel world) {
-		this(m,world,1,1,1); //If there is no information on the number of agent available, we will make as if there were one of each
+	public CentrePreDisaster(Map m) {
+		this(m,1,1,1); //If there is no information on the number of agent available, we will make as if there were one of each
 	}
 	
-	public CentrePreDisaster(Map m, StandardWorldModel world, int numberOfTeam) {
+	public CentrePreDisaster(Map m, int numberOfTeam) {
 		//If there is a numberOfTeam given, it means there is the same number of agent available for each category
-		this(m,world,numberOfTeam,numberOfTeam,numberOfTeam);
+		this(m,numberOfTeam,numberOfTeam,numberOfTeam);
 	}
 	
-	public CentrePreDisaster(Map m, StandardWorldModel world, int nbPFAvailable, int nbATAvailable, int nbFBAvailable){
+	public CentrePreDisaster(Map m,int nbPFAvailable, int nbATAvailable, int nbFBAvailable){
 		this.m=m;
-		this.w=world;
 		nbPoliceForceAvailable=nbPFAvailable;
 		nbAmbulanceTeamAvailable=nbATAvailable;
 		nbFireBrigadeAvailable=nbFBAvailable;
@@ -45,7 +43,7 @@ public class CentrePreDisaster {
 	}
 	
 	private void calcGraph() {
-		Convertisseur c = new Convertisseur(m,w);
+		Convertisseur c = new Convertisseur(m);
 		g=c.getGraph();
 	}
 	

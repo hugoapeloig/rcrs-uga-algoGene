@@ -66,7 +66,7 @@ public final class LaunchSampleAgents {
           LOG.warn("Unrecognised option: " + args[i]);
         }
       }   
-      central = new CentrePreDisaster(this.worldInfo.getRaw().map, this.worldInfo.getRaw()); //On créé le centrePreDisaster //Regarder comment récuperer map et worldModel
+      central = new CentrePreDisaster(this.worldInfo.getRaw().map); //On créé le centrePreDisaster //Regarder comment récuperer map et worldModel
       ComponentLauncher launcher = new TCPComponentLauncher(host, port, config);
       connect(launcher, fb, pf, at, config);
     } catch (IOException e) {
