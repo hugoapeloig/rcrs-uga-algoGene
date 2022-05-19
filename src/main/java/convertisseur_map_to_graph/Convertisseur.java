@@ -6,7 +6,8 @@ import java.util.Set;
 
 import rescuecore2.standard.entities.StandardWorldModel;
 
-import maps.*;
+import maps.gml.GMLMap;
+import maps.gml.GMLBuilding;
 import graphResolution.Edge;
 import graphResolution.Graph;
 import graphResolution.Node;
