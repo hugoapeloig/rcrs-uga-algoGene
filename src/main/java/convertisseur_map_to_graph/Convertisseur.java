@@ -42,7 +42,7 @@ public class Convertisseur {
 		
 		//Recupere les ids des batiments et les transfere dans un tableau de int
 		
-		listBuild=buildings.toArray();
+		listBuild=createTab());
 		idBuilding(listBuild);
 		
 		//Creer la list de nodes et la listes de edges
@@ -130,6 +130,19 @@ public class Convertisseur {
 			
 			tabID[i]=listBuild[i].getID();
 			i++;
+		}
+		
+	}
+	
+	public void createTab(Set<GMLBuilding> buildings){
+		
+		Iterator<GMLBuilding> it = buildings.iterator();
+		int i=0;
+		
+		while(it.hasNext()){
+			listBuild[i]= it.next();
+			i++;
+			it.remove();
 		}
 		
 	}
