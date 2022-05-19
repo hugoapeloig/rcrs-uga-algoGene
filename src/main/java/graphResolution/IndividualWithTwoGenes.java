@@ -18,7 +18,7 @@ public class IndividualWithTwoGenes {
 		for(int i=1; i<Constants.NUMBEROFBUILDINGS; i++) total.add(Constants.GETANONALREADYCHOOSENNUMBER(total));
 		int imp=0;
 		if(total.size()%2 !=0) imp=1;
-		for(int i=0; i<(total.size()/2)+imp; i++) genesFirst.add(total.get(i)); //On deplace la première moitie dans First
+		for(int i=0; i<(total.size()/2)+imp; i++) genesFirst.add(total.get(i)); //On deplace la premiere moitie dans First
 		for(int i=(total.size()/2)+imp; i<total.size(); i++) genesSecond.add(total.get(i)); //On deplace ce qui reste
 		calcScores();
 	}
