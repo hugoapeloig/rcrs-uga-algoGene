@@ -18,7 +18,7 @@ public class Convertisseur {
 	private Graph graph;
 	
 	private Set<GMLBuilding> buildings;
-	private GMLBulding[] listBuild;
+	private GMLBuilding[] listBuild;
 	
 	
 	private int[] tabID;
@@ -122,14 +122,14 @@ public class Convertisseur {
 		}
 	}
 	
-	public idBuilding(GMLBulding[] buildings){
+	public void idBuilding(GMLBuilding[] buildings){
 
 		int i =0;
 		
 		while(i < buildings.size()){
 			
 			tabID[i]=listBuild[i].getID();
-			
+			i++;
 		}
 		
 	}
